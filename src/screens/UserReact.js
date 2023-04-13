@@ -11,7 +11,6 @@ const UserReact = () => {
     const [name, setName] = useState();
 
     const token = localStorage.getItem("token");
-
     const navigate = useNavigate();
 
     useEffect(() => {

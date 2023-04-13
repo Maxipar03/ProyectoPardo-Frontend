@@ -36,7 +36,6 @@ const Header = () => {
         }
 
     }, [token])
-
     return (
         <div className="header">
             <div className="logo">
