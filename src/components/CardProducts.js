@@ -20,8 +20,9 @@ const CardProducts = ({ imgUrl, nombre, precio, _id }) => {
                     <img src={imgUrl} alt="hola" className="product-img" />
                     <div className="components-container">
                         <h2>{nombre}</h2>
-                        <div className="divider"></div>
+                        <div className="components-price">
                         <h3>{precio.toLocaleString('es-ES', options)}$</h3>
+                        </div>
                     </div>
                 </div>
             </Link>

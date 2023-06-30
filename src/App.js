@@ -10,6 +10,7 @@ import ProductsDetail from './screens/ProductsDetail'
 import CartScreen from './screens/CartScreen';
 import AllProductsScreen from './screens/AllProductsScreen';
 import SearchProducts from './screens/SearchProducts';
+import CreateProduct from './screens/CreateProduct';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/products/all' element={<AllProductsScreen/>}/>
           <Route path='/cart' element={<CartScreen/>}/>
           <Route path='/search/:product' element={<SearchProducts/>}/>
+          <Route path='/create-product' element={<CreateProduct/>}/>
         </Routes>
       </Router>
     </div>

@@ -7,6 +7,7 @@ const HomeBaner = () => {
     return (
         <div className="banner-container">
             <img className="image-banner" src={bannerImg} alt="imageBanner" />
+            <div className="banner-content">
             <MovingComponent
                 type="fadeIn"
                 duration="3000ms"
@@ -17,6 +18,7 @@ const HomeBaner = () => {
                 fillMode="none"><h1 className="title-banner">Forjando calidad y resistencia para tus proyectos desde <span className="title-banner-bold">1982</span></h1>
                 <button className="button-Contact">Contacto</button>
             </MovingComponent>
+            </div>
         </div>
     )
 }

@@ -47,7 +47,7 @@ const SlideProducts = () => {
           </div>}
         <div className="slide-last5Products">
           {
-            lastFiveProducts.map(product => (<CardProductsHome key={product._id} imgUrl={product.imgUrl} precio={product.precio} nombre={product.nombre} />))
+            lastFiveProducts.map(product => (<CardProductsHome key={product._id} _id={product._id} imgUrl={product.imgUrl} precio={product.precio} nombre={product.nombre} />))
           }
         </div>
       </MovingComponent>

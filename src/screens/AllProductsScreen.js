@@ -39,9 +39,11 @@ const AllProductsScreen = () => {
     return (
         <div className="wrapper">
             <Header />
+            <div className="categoryPage-all">
             {errorMessage ? <h1>{errorMessage}</h1> : <div className="categoryPage-title"><h1>Todos los productos</h1></div>}
             <ListProducts productsData={currentPosts} />
             <Pagination totalPosts={productsData.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+            </div>
             <Footer />
         </div>
     )

@@ -28,13 +28,17 @@ const CategoryProduct = () => {
 
 
     return (<div className="wrapper">
+
         <Header />
+        <div className="category-products-container">
+
         {errorMessage ? <h1>{errorMessage}</h1> : <div className="categoryPage-title"><h1>todos los productos con categoria "{category}"</h1></div>}
 
         <div className="category-products">
 
             <ListProducts key={categoryProducts._id} productsData={categoryProducts} />
 
+        </div>
         </div>
 
         <Footer />
