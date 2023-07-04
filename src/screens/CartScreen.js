@@ -59,8 +59,10 @@ const CartScreen = () => {
 
   const totalPrice = () => {
     const total = cart.reduce((accumulator, product) => {
+      console.log("🚀 ~ file: CartScreen.js:62 ~ total ~ product:", product)
       return accumulator + (product.producto.precio * product.cantidad);
     }, 0);
+    console.log("🚀 ~ file: CartScreen.js:64 ~ total ~ cart:", cart)
     return total;
   };
 
@@ -89,14 +91,14 @@ const CartScreen = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='tablebody'>
             {cart.map(product => (
               <tr key={product._id} className='cartTable-body'>
                 <td><img className='productCart-img' alt='cartImage' src={product.producto.imgUrl} /></td>
                 <td>{product.producto.nombre}</td>
                 <td> <div className='cartTable-quantity'><i className="fa-solid fa-minus" onClick={() => handleClickRest(product._id)}></i>{product.cantidad}<i className="fa-solid fa-plus" onClick={() => handleClickAdd(product._id)}></i></div></td>
-                <td>{product.producto.precio}$</td>
-                <td><i className="fa-solid fa-trash" onClick={() => handleClickDelete}></i></td>
+                <td>${product.producto.precio}</td>
+                <td><i className="fa-solid fa-trash" onClick={() => handleClickDelete(product._id)}></i></td>
               </tr>
             ))}
           </tbody>
@@ -111,9 +113,9 @@ const CartScreen = () => {
               </tr>
             </thead>
             <tbody className='cartTablePrice-body'>
-              <td>{totalPrice().toLocaleString('es-ES', options)}$</td>
-              <td>{Math.ceil(iva).toLocaleString('es-ES', options)}$</td>
-              <td className='cartTablePrice-finalPrice'>{Math.ceil(totalIva).toLocaleString('es-ES', options)}$</td>
+              <td>${totalPrice().toLocaleString('es-ES', options)}</td>
+              <td>${Math.ceil(iva).toLocaleString('es-ES', options)}</td>
+              <td className='cartTablePrice-finalPrice'>${Math.ceil(totalIva).toLocaleString('es-ES', options)}</td>
             </tbody>
 
           </table>

@@ -2,8 +2,8 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
-import { useFormik } from "formik"
-import * as Yup from "yup"
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const RegisterScreen = () => {
     window.scrollTo(0, 0);
@@ -13,13 +13,13 @@ const RegisterScreen = () => {
             nombre: "",
             apellido: "",
             email: "",
-            contraseña: ""
+            contraseña: "",
         },
         validationSchema: Yup.object({
             nombre: Yup.string().required("Ingrese su nombre en el campo"),
             apellido: Yup.string().required("Ingrese su apellido en el campo"),
             email: Yup.string().required("Ingrese su email en el campo"),
-            contraseña: Yup.string().required("Ingrese su contraseña en el campo")
+            contraseña: Yup.string().required("Ingrese su contraseña en el campo"),
         }),
         validateOnChange: false,
         validateOnBlur: false,
@@ -28,13 +28,13 @@ const RegisterScreen = () => {
                 nombre: formData.nombre,
                 apellido: formData.apellido,
                 email: formData.email,
-                contraseña: formData.contraseña
-            }
+                contraseña: formData.contraseña,
+            };
 
-            axios.post('http://localhost:3001/users/register', newUser)
-            actions.resetForm()
+            axios.post("http://localhost:3001/users/register", newUser);
+            actions.resetForm();
         },
-    })
+    });
 
     return (
         <div className="wrapper">
@@ -44,34 +44,92 @@ const RegisterScreen = () => {
                     <h1 className="user-title">Registrarse</h1>
                     <form className="user-form" onSubmit={formik.handleSubmit}>
                         <div className="user-input">
-                            <label htmlFor="nombre"><strong>Nombre</strong></label>
-                            <input type={"text"} name="nombre" onChange={formik.handleChange} value={formik.values.nombre} placeholder="Ingrese su nombre" />
-                            {formik.errors.nombre ? (<p className="error">{formik.errors.nombre}</p>) : null}
+                            <label htmlFor="nombre">
+                                <strong>Nombre</strong>
+                            </label>
+                            <input
+                                type={"text"}
+                                name="nombre"
+                                onChange={formik.handleChange}
+                                value={formik.values.nombre}
+                                placeholder="Ingrese su nombre"
+                                className={
+                                    formik.errors.nombre ? "input-error" : "user-formInput"
+                                }
+                            />
+                            {formik.errors.nombre ? (
+                                <p className="error">{formik.errors.nombre}</p>
+                            ) : null}
                         </div>
                         <div className="user-input">
-                            <label htmlFor="apellido"><strong>Apellido</strong></label>
-                            <input type={"text"} name="apellido" onChange={formik.handleChange} error={formik.errors.apellido} value={formik.values.apellido} placeholder="Ingrese su apellido" />
-                            {formik.errors.apellido ? (<p className="error">{formik.errors.apellido}</p>) : null}
+                            <label htmlFor="apellido">
+                                <strong>Apellido</strong>
+                            </label>
+                            <input
+                                type={"text"}
+                                name="apellido"
+                                onChange={formik.handleChange}
+                                error={formik.errors.apellido}
+                                value={formik.values.apellido}
+                                className={
+                                    formik.errors.apellido ? "input-error" : "user-formInput"
+                                }
+                                placeholder="Ingrese su apellido"
+                            />
+                            {formik.errors.apellido ? (
+                                <p className="error">{formik.errors.apellido}</p>
+                            ) : null}
                         </div>
                         <div className="user-input">
-                            <label htmlFor="email"><strong>Email</strong></label>
-                            <input type={"email"} name="email" onChange={formik.handleChange} error={formik.errors.email} value={formik.values.email} placeholder="Ingrese su email" />
-                            {formik.errors.email ? (<p className="error">{formik.errors.email}</p>) : null}
+                            <label htmlFor="email">
+                                <strong>Email</strong>
+                            </label>
+                            <input
+                                type={"email"}
+                                name="email"
+                                onChange={formik.handleChange}
+                                error={formik.errors.email}
+                                value={formik.values.email}
+                                className={
+                                    formik.errors.email ? "input-error" : "user-formInput"
+                                }
+                                placeholder="Ingrese su email"
+                            />
+                            {formik.errors.email ? (
+                                <p className="error">{formik.errors.email}</p>
+                            ) : null}
                         </div>
                         <div className="user-input">
-                            <label htmlFor="contraseña"><strong>Contraseña</strong></label>
-                            <input type={"password"} name="contraseña" onChange={formik.handleChange} error={formik.errors.contraseña} value={formik.values.contraseña} placeholder="Ingrese una contraseña" />
-                            {formik.errors.contraseña ? (<p className="error">{formik.errors.contraseña}</p>) : null}
+                            <label htmlFor="contraseña">
+                                <strong>Contraseña</strong>
+                            </label>
+                            <input
+                                type={"password"}
+                                name="contraseña"
+                                onChange={formik.handleChange}
+                                error={formik.errors.contraseña}
+                                value={formik.values.contraseña}
+                                className={
+                                    formik.errors.contraseña ? "input-error" : "user-formInput"
+                                }
+                                placeholder="Ingrese una contraseña"
+                            />
+                            {formik.errors.contraseña ? (
+                                <p className="error">{formik.errors.contraseña}</p>
+                            ) : null}
                         </div>
-                        <button type="submit" className="button-user">REGISTRASE</button>
+                        <button type="submit" className="button-user">
+                            REGISTRASE
+                        </button>
                     </form>
-                    <p className="redirect">¿Ya tengo cuenta? <a href="/login">Logearse</a></p>
-
+                    <p className="redirect">
+                        ¿Ya tengo cuenta? <a href="/login">Logearse</a>
+                    </p>
                 </div>
             </div>
             <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default RegisterScreen
+export default RegisterScreen;

@@ -56,6 +56,9 @@ const DropdownMenu = () => {
                 <ul>
                     <li onClick={handleClickCart}>Carrito</li>
                     <li onClick={handleClickLogOut}>Cerrar Sesion</li>
+                    {isAdmin === "admin" ? (
+                        <li onClick={handleClickCreateProduct}>Crear producto</li>
+                    ) : null}
                 </ul>
             </div>
         </>

@@ -459,7 +459,7 @@ box-shadow: -1px 0px 78px -12px rgba(0,0,0,0.64);
 
 /*  REGISTER AND LOGIN  */
 
-.user-form input{
+.user-formInput{
   border: solid 1px #0054ff94;
   width: 20em;
   height: 30px;
@@ -519,7 +519,16 @@ box-shadow: -1px 0px 78px -12px rgba(0,0,0,0.64);
   border-radius: 3%;
   border: 0;
   font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
   font-weight: bold;
+}
+
+.input-error{
+  border: solid 1px #ff000094;
+  width: 20em;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #fdfcfc;
 }
 
 .redirect{
@@ -628,23 +637,34 @@ box-shadow: -1px 0px 78px -12px rgba(0,0,0,0.64);
 .cartTable{
   width: 100%;
   border-collapse: collapse;
+  border-top: solid;
+  border-color: white;
 }
 
 .cartTable th{
   padding: 10px 0px 10px 0px;
-  background-color: red;
+  background-color: rgb(138, 72, 72);
   font-size: 1.3rem;
 }
 
 .productCart-img{
   width: 100%;
-  max-width: 130px;
-  max-height: 130px;
+  max-width: 170px;
+  max-height: 170px;
 }
 
 .cartTable-body td{
   padding: 30px;
   font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.cartTable-body td i {
+  padding: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px;
+  background-color: #ffffff;
 }
 
 .cartTable-container{
@@ -657,6 +677,7 @@ box-shadow: -1px 0px 78px -12px rgba(0,0,0,0.64);
 
 .cartTablePrice{
   padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   border-top: 3px solid white;
 }
@@ -683,11 +704,16 @@ box-shadow: -1px 0px 78px -12px rgba(0,0,0,0.64);
 .cartTablePrice-container{
   display: flex;
   justify-content: flex-end;
-  padding-right: 5%;
+  padding-right: 1%;
+  background-color: #bebac567;
 }
 
 .cartTable-quantity i{
 padding: 0px 10px 0px 10px;
+}
+
+.tablebody{
+  background-color: #a7a5a5;
 }
 
 .cartTablePrice-finalPrice{

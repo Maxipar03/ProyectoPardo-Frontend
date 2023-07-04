@@ -38,8 +38,8 @@ const LoginScreen = () => {
             })
                 .catch(error => {
                     if (error.response.status === 401) {
-                        //Guarda el mensaje de error enviado desde el backend
-                        setErrorMessage(error.response.data)
+                        const errorMessage = typeof error.response.data === 'string' ? error.response.data : 'Error desconocido';
+                        setErrorMessage(errorMessage);
                     }
                 })
         }
@@ -56,12 +56,12 @@ const LoginScreen = () => {
                     <form className="user-form" onSubmit={formik.handleSubmit}>
                         <div className="user-input">
                             <label htmlFor="email"><strong>Email</strong></label>
-                            <input type={"email"} name="email" onChange={formik.handleChange} value={formik.values.email} placeholder="Ingrese su email" />
+                            <input type={"email"} name="email" onChange={formik.handleChange} value={formik.values.email} placeholder="Ingrese su email" className={formik.errors.email ? "input-error" : "user-formInput"} />
                             {formik.errors.email ? (<p className="error">{formik.errors.email}</p>) : null}
                         </div>
                         <div className="user-input">
                             <label htmlFor="contraseña"><strong>Contraseña</strong></label>
-                            <input type={"password"} name="contraseña" onChange={formik.handleChange} value={formik.values.contraseña} placeholder="Ingrese su contraseña" />
+                            <input type={"password"} name="contraseña" onChange={formik.handleChange} value={formik.values.contraseña} placeholder="Ingrese su contraseña" className={formik.errors.contraseña ? "input-error" : "user-formInput"} />
                             {formik.errors.contraseña ? (<p className="error">{formik.errors.contraseña}</p>) : null}
                             {/*Muestra mensaje De error en el caso de que tenga*/}
                             {errorMessage ? <p className="error">{errorMessage}</p> : null}

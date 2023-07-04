@@ -10,11 +10,28 @@ const ProductsDetail = () => {
     const [detailProduct, setDetailProduct] = useState([])
 
     const [errorMessage, setErrorMessage] = useState()
+    
+    const [isAdmin, setIsAdmin] = useState();
 
     const navigate = useNavigate();
 
-
     const { id } = useParams()
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (token) {
+            axios
+                .get(`http://localhost:3001/users/user`, {
+                    headers: {
+                        token: token,
+                    },
+                })
+                .then(({ data }) => setIsAdmin(data.rol))
+                .catch((error) => console.error(error));
+        }
+    }, [token])
+    
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -76,7 +93,10 @@ const ProductsDetail = () => {
                     <div className="productDetail-buy">
                         <h2 className="productDetail-precio">{detailProduct.precio}$</h2>
                         <button className="productDetail-button" onClick={handleClick}>Comprar</button>
-                    </div>
+                        {isAdmin === "admin" ? (
+                        <button className="productDetail-button">Editar Producto</button>
+                    ) : null}
+                    </div>         
                 </div>
             </div>
         </div>
